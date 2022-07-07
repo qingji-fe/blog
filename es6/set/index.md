@@ -199,3 +199,77 @@ var a = set.values();
 a.next();
 a.next();
 ```
+
+- v3 接受迭代对象( 数组暴力解法)
+
+```javascript
+class Set {
+  constructor(data) {
+    this.size = 0;
+    this.queue = [];
+    data.forEach((item) => {
+      this.add(item);
+    });
+  }
+  add(val) {
+    if (this.queue.indexOf(val) == -1) {
+      this.queue.push(val);
+      this.size += 1;
+    }
+    return this;
+  }
+  delete(val) {}
+  has(val) {}
+  clear() {}
+  forEach(callback) {}
+  values() {}
+}
+
+var set = new Set([1, 2, 3]); //Set {size: 3, queue: Array(3)}
+```
+
+> 直接遍历 data 暴力遍历执行 this.add
+
+- v4 接受迭代对象(迭代对象)
+
+```javascript
+function actionAdd(data, callback) {
+  let iterable, res;
+  iterable = data[Symbol.iterator]();
+  res = iterable.next();
+
+  while (!res.done) {
+    callback(res.value);
+    res = iterable.next();
+  }
+}
+class Set {
+  constructor(data) {
+    this.size = 0;
+    this.queue = [];
+    actionAdd(data, (item) => {
+      this.add(item);
+    });
+  }
+
+  add(val) {
+    if (this.queue.indexOf(val) == -1) {
+      this.queue.push(val);
+      this.size += 1;
+    }
+    return this;
+  }
+  delete(val) {}
+  has(val) {}
+  clear() {}
+  forEach(callback) {}
+  values() {}
+}
+
+var set = new Set([1, 2, 3]); //Set {size: 3, queue: Array(3)}
+```
+
+## 小结
+
+我是庆忌，本着基础进阶的初心，持续输出干货
+欢迎来 star, 也欢迎来交流
