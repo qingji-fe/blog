@@ -32,9 +32,9 @@ set.add(2).add(3); // Set(3) {1, 2, 3}
 set.delete(1); // return true  set: Set(2) {2, 3}
 set.has(1); // false
 set.has(2); // true
-set.size(); //2
+set.size; //2
 set.clear(); //  Set(0) {size: 0}
-set.size(); // 0
+set.size; // 0
 ```
 
 ### 遍历方法
