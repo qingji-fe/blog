@@ -176,3 +176,7 @@ map.delete("sss111111");
 
 console.log("mapmapmapmap", map, map.has("sss"), map.get("sss"));
 ```
+
+- v2 基于底层
+
+  ###
