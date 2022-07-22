@@ -75,4 +75,15 @@ function deepHeight2(tree) {
   loop(tree, 1);
   return maxHeight;
 }
-console.log("111", deepHeight2(tree));
+// console.log("111", deepHeight2(tree));
+// 1.3 深度自下而上递归计算二叉树深度
+function deepHeight3(tree) {
+  if (tree == null) {
+    return 0;
+  }
+  const leftH = deepHeight3(tree.left);
+  const rightH = deepHeight3(tree.right);
+  console.log("leftHleftHleftHleftHleftH", leftH, rightH);
+  return 1 + Math.max(leftH, rightH);
+}
+console.log("ddddd", deepHeight3(tree));
